@@ -21,13 +21,13 @@ const clickImages = [...clickImg].map((img) => {
 
   function selectImg(event) {
     event.preventDefault();
-
+    const { dataset, alt } = event.target;
     if (event.target.nodeName !== "IMG") {
       return;
     }
     basicLightbox
       .create(
-        `<img width="1400" height="900" src="${event.target.dataset.source}" alt="${event.target.alt}">`
+        `<img width="1400" height="900" src="${dataset.source}" alt="${alt}">`
       )
       .show();
   }
