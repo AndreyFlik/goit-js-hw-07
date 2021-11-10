@@ -11,13 +11,10 @@ data-source="${image.original}"
 alt="${image.description}"/></a></div>`;
   })
   .join("");
+
 list.insertAdjacentHTML("beforeend", markup);
 
 const clickImg = document.querySelectorAll(".gallery__item");
-
-const targetImg = document
-  .querySelector(".gallery__image")
-  .getAttribute("data-source");
 
 const clickImages = [...clickImg].map((img) => {
   img.addEventListener("click", selectImg);
@@ -29,7 +26,9 @@ const clickImages = [...clickImg].map((img) => {
       return;
     }
     basicLightbox
-      .create(`<img width="1400" height="900" src="${targetImg}">`)
+      .create(
+        `<img width="1400" height="900" src="${event.target.dataset.source}" alt="${event.target.alt}">`
+      )
       .show();
   }
 });
