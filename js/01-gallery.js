@@ -20,7 +20,6 @@ const clickImg = document.querySelectorAll(".gallery__item");
 const targetImg = document
   .querySelector(".gallery__image")
   .getAttribute("data-source");
-console.log(targetImg);
 
 const clickImages = [...clickImg].map((img) => {
   img.addEventListener("click", selectImg);
