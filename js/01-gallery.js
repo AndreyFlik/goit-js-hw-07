@@ -1,9 +1,7 @@
 import { galleryItems } from "./gallery-items.js";
 // Change code below this line
 
-const body = document.body;
-
-const list = body.firstElementChild;
+const list = document.querySelector(".gallery");
 
 const markup = galleryItems
   .map((image) => {
@@ -13,7 +11,7 @@ data-source="${image.original}"
 alt="${image.description}"/></a></div>`;
   })
   .join("");
-list.insertAdjacentHTML("afterend", markup);
+list.insertAdjacentHTML("beforeend", markup);
 
 const clickImg = document.querySelectorAll(".gallery__item");
 
