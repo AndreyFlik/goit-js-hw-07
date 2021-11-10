@@ -1,13 +1,9 @@
 import { galleryItems } from "./gallery-items.js";
 // Change code below this line
 
-// console.log(galleryItems);
-
 const body = document.body;
-// console.log(body);
 
 const list = body.firstElementChild;
-// console.log(list);
 
 const markup = galleryItems
   .map((image) => {
@@ -17,6 +13,26 @@ data-source="${image.original}"
 alt="${image.description}"/></a></div>`;
   })
   .join("");
+list.insertAdjacentHTML("afterend", markup);
 
-const imagesHtml = list.insertAdjacentHTML("afterend", markup);
-// console.log(markup);
+const clickImg = document.querySelectorAll(".gallery__item");
+
+const targetImg = document
+  .querySelector(".gallery__image")
+  .getAttribute("data-source");
+console.log(targetImg);
+
+const clickImages = [...clickImg].map((img) => {
+  img.addEventListener("click", selectImg);
+
+  function selectImg(event) {
+    event.preventDefault();
+
+    if (event.target.nodeName !== "IMG") {
+      return;
+    }
+    basicLightbox
+      .create(`<img width="1400" height="900" src="${targetImg}">`)
+      .show();
+  }
+});
