@@ -14,21 +14,21 @@ alt="${image.description}"/></a></div>`;
 
 list.insertAdjacentHTML("beforeend", markup);
 
-const clickImg = document.querySelectorAll(".gallery__item");
+const clickImg = document.querySelector(".gallery");
 
-const clickImages = [...clickImg].map((img) => {
-  img.addEventListener("click", selectImg);
+// const clickImages = [...clickImg].map((img) => {
+clickImg.addEventListener("click", selectImg);
 
-  function selectImg(event) {
-    event.preventDefault();
-    const { dataset, alt } = event.target;
-    if (event.target.nodeName !== "IMG") {
-      return;
-    }
-    basicLightbox
-      .create(
-        `<img width="1400" height="900" src="${dataset.source}" alt="${alt}">`
-      )
-      .show();
+function selectImg(event) {
+  event.preventDefault();
+  const { dataset, alt } = event.target;
+  if (event.target.nodeName !== "IMG") {
+    return;
   }
-});
+  basicLightbox
+    .create(
+      `<img width="1400" height="900" src="${dataset.source}" alt="${alt}">`
+    )
+    .show();
+}
+// });
